@@ -9,7 +9,7 @@ def index(request):
     if request.method == 'POST':
         city = request.POST.get('city')
         
-        api_key = '845b4b447a8b4624885162922250210' 
+        api_key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx' 
         
         url = f'http://api.weatherapi.com/v1/current.json?key={api_key}&q={city}'
 
