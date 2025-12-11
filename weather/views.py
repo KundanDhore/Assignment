@@ -1,4 +1,4 @@
-# weather/views.py
+import os
 import requests
 from django.shortcuts import render
 
@@ -9,7 +9,7 @@ def index(request):
     if request.method == 'POST':
         city = request.POST.get('city')
         
-        api_key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxx' 
+        api_key = os.environ.get('WEATHER_API_KEY')
         
         url = f'http://api.weatherapi.com/v1/current.json?key={api_key}&q={city}'
 
