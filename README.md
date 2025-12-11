@@ -1,6 +1,9 @@
 # Bookstore & Weather Django App
 
 A modular Django web application featuring a RESTful Bookstore API with a dynamic frontend and a Weather dashboard integrating external third-party data.
+**Find the preview at following links:**
+Django Application: http://3.83.35.62:8000/
+Third-Party Weather Integration: http://3.83.35.62:8000/weather/
 
 ## Project Overview
 
