@@ -2,7 +2,9 @@
 
 A modular Django web application featuring a RESTful Bookstore API with a dynamic frontend and a Weather dashboard integrating external third-party data.
 **Find the preview at following links:**
+
 Django Application: http://3.83.35.62:8000/
+
 Third-Party Weather Integration: http://3.83.35.62:8000/weather/
 
 ## Project Overview
@@ -23,18 +25,23 @@ This project demonstrates a hybrid Django architecture:
 Follow the steps below to set up and run the project on your local machine.
 
 **1. Clone the Repository**
+
 git clone <your-repo-url>
 cd bookstore_project
 
 **2. Create and Activate Virtual Environment**
+
 python -m venv venv
 venv\Scripts\activate
 
 **3. Install Dependencies**
+
 pip install django djangorestframework psycopg2-binary requests
 
 **4. Database Configuration**
+
 **A. Create the PostgreSQL Database**
+
 Open terminal or pgAdmin and run:
 
 psql -U postgres
@@ -59,9 +66,6 @@ DATABASES = {
 **5. API Key Configuration**
 
 Add your WeatherAPI key inside weather/views.py:
-
-# weather/views.py
-api_key = 'YOUR_WEATHERAPI_KEY_HERE'
 
 **6. Run Migrations**
 python manage.py makemigrations
