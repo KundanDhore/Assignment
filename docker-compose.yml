@@ -1,33 +1,35 @@
 version: '3.8'
 
 services:
-  # Service 1: The Django Web App
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
-      - .:/app
+      - .:/app               # dev only
     ports:
       - "8000:8000"
     depends_on:
       - db
+    env_file:
+      - .env
     environment:
-      - DB_NAME=bookstore_db
-      - DB_USER=postgres
-      - DB_PASSWORD=postgres
+      # Optional: you can keep these here if you want explicit overrides
       - DB_HOST=db
       - DB_PORT=5432
+    restart: unless-stopped
 
-  # Service 2: The PostgreSQL Database
   db:
     image: postgres:15
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      - POSTGRES_DB=bookstore_db
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - WEATHER_API_KEY=845b4b447a8b4624885162922250210
+      - postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB} -h localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
 
 volumes:
   postgres_data:
